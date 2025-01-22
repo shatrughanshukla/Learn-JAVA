@@ -1,5 +1,5 @@
 package JAVA;
-public class RunPackage{
+public class L1_0RunPackage{
     public static void main(String[] args){
         System.out.println("How to use package in java : ");
         // // Check your directory structure: Ensure your file is in the correct folder structure:
