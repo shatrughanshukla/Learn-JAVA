@@ -418,3 +418,70 @@ Edit
 java MyProgram 123
 Even though 123 looks like a number, it is stored in the args array as a string: "123".
 If you want to treat it as a number, you have to explicitly convert it using Integer.parseInt(args[0]).
+
+
+ // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // //
+
+ To remove a file from tracking in Git, you can use the `git rm` command with the `--cached` option. Here's how to do it:
+
+---
+
+### **Steps to Remove a File from Tracking:**
+
+#### 1. **Untrack the File Without Deleting It Locally:**
+If you want to stop tracking the file but keep it in your local working directory, use:
+
+```bash
+git rm --cached <file_name>
+```
+
+- Replace `<file_name>` with the name of the file you want to remove from tracking.
+- This command removes the file from the staging area but does not delete it from your disk.
+
+#### 2. **Commit the Change:**
+After removing the file from tracking, commit the change to finalize it:
+
+```bash
+git commit -m "Stop tracking <file_name>"
+```
+
+#### 3. **Add to `.gitignore` (Optional):**
+If you don't want Git to track the file again in the future, add it to your `.gitignore` file:
+
+```bash
+echo "<file_name>" >> .gitignore
+```
+
+---
+
+### **Example:**
+Suppose you have a file named `config.env` that you want to stop tracking:
+
+```bash
+git rm --cached config.env
+git commit -m "Stop tracking config.env"
+echo "config.env" >> .gitignore
+```
+
+---
+
+### **If the File Is Already in `.gitignore` but Still Tracked:**
+1. Ensure the file is listed in `.gitignore`.
+2. Use `git rm --cached` to untrack the file:
+
+   ```bash
+   git rm --cached <file_name>
+   ```
+
+---
+
+### **Verify Changes:**
+Run the following command to confirm the file is no longer being tracked:
+
+```bash
+git status
+```
+
+You should see the file listed as "deleted" in the staging area but still present in your local directory.
+
+To add file into .git  -> ************************************** echo "<file_name>" >> .gitignore ***************************************
