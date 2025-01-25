@@ -1,4 +1,4 @@
-//package JAVA;
+package JAVA;
 
 public class L2_3TypeConversionandCasting 
 {
