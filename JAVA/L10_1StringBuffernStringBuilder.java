@@ -17,3 +17,4 @@ public class L10_1StringBuffernStringBuilder {
         System.out.println(sb.capacity());
     }
 }
+// string buffer is thread safe while string builder isn't.
