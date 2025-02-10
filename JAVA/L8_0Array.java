@@ -1,4 +1,4 @@
-//package JAVA;
+package JAVA;
 
 public class L8_0Array {
     public static void main(String[] args)
