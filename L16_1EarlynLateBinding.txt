@@ -1,0 +1,145 @@
+### **Early Binding vs Late Binding in Java**  
+
+### **1. What is Binding?**
+Binding refers to the process of **linking a method call to the actual method implementation**. This can happen **at compile-time (early binding) or at runtime (late binding).**  
+
+---
+
+## **2. Early Binding (Static Binding)**
+### **Definition**
+- **Early binding** (also called **static binding**) happens **at compile-time**.
+- The **method to be called is determined by the reference type**, not the object type.
+- **Used for:**  
+  - **Private methods**  
+  - **Final methods**  
+  - **Static methods**  
+  - **Overloaded methods**  
+
+### **Example:**
+```java
+class A {
+    static void staticMethod() {
+        System.out.println("A's static method");
+    }
+    
+    void normalMethod() {
+        System.out.println("A's normal method");
+    }
+}
+
+class B extends A {
+    static void staticMethod() {  // Hiding, not overriding
+        System.out.println("B's static method");
+    }
+
+    @Override
+    void normalMethod() {
+        System.out.println("B's normal method");
+    }
+}
+
+public class Test {
+    public static void main(String[] args) {
+        A obj = new B();  // Upcasting
+
+        obj.staticMethod();  // Calls A's method (compile-time binding)
+        obj.normalMethod();  // Calls B's method (runtime binding)
+    }
+}
+```
+### **Output:**
+```
+A's static method
+B's normal method
+```
+### **Why?**
+- `staticMethod()` is **static**, so it's bound **at compile-time** → `A`'s method is called.
+- `normalMethod()` is an **instance method**, so it's **dynamically bound at runtime** → `B`'s method is called.
+
+---
+
+## **3. Late Binding (Dynamic Binding)**
+### **Definition**
+- **Late binding** (also called **dynamic binding**) happens **at runtime**.
+- The **method to be executed is determined by the actual object type**, not the reference type.
+- **Used for:**  
+  - **Overridden methods (instance methods)**  
+  - **Achieves runtime polymorphism**  
+
+### **Example:**
+```java
+class Parent {
+    void show() {
+        System.out.println("Parent's show method");
+    }
+}
+
+class Child extends Parent {
+    @Override
+    void show() {  // Overriding method
+        System.out.println("Child's show method");
+    }
+}
+
+public class Test {
+    public static void main(String[] args) {
+        Parent obj = new Child();  // Upcasting
+        obj.show();  // Calls Child's show() at runtime
+    }
+}
+```
+### **Output:**
+```
+Child's show method
+```
+### **Why?**
+- `show()` is overridden in `Child`.
+- Even though `obj` is of type `Parent`, it holds an instance of `Child`.
+- **At runtime, Java determines the actual object type (`Child`) and calls `Child`'s method.**  
+  This is **late binding** (or **runtime polymorphism**).
+
+---
+
+## **4. Key Differences Between Early and Late Binding**
+| Feature            | Early Binding (Static) | Late Binding (Dynamic) |
+|--------------------|---------------------|---------------------|
+| **Binding Time** | Compile-time | Runtime |
+| **Methods Affected** | Static, Final, Private, Overloaded methods | Overridden instance methods |
+| **Resolution Based On** | Reference type | Object type |
+| **Supports Polymorphism?** | ❌ No | ✅ Yes |
+| **Performance** | Faster (resolved at compile-time) | Slower (resolved at runtime) |
+
+---
+
+## **5. How Java Implements Early and Late Binding**
+### **Early Binding (Compile-Time)**
+- **The compiler determines the method to call based on the reference type.**
+- **Does not require extra processing at runtime.**
+- Example:
+  ```java
+  A obj = new B();
+  obj.staticMethod();  // Compiler binds it to A's staticMethod
+  ```
+
+### **Late Binding (Runtime)**
+- **Uses the Virtual Method Table (VMT) to determine the actual method to call at runtime.**
+- **Enables method overriding and polymorphism.**
+- Example:
+  ```java
+  A obj = new B();
+  obj.show();  // JVM dynamically calls B's overridden method
+  ```
+
+---
+
+## **6. Summary**
+| Type | Happens When? | Used For | Example |
+|------|--------------|---------|---------|
+| **Early Binding (Static Binding)** | Compile-time | Static, Final, Private, Overloaded methods | `staticMethod()` or `finalMethod()` |
+| **Late Binding (Dynamic Binding)** | Runtime | Overridden instance methods | `show()` (overridden) |
+
+### **Key Takeaway:**
+- **Early binding is faster** but **does not support runtime polymorphism**.
+- **Late binding enables polymorphism**, allowing overridden methods to be called dynamically.
+
+🚀
