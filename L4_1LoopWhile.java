@@ -6,13 +6,14 @@ public class L4_1LoopWhile
         int i = 1;
         while (i<=4)
         {
-            System.out.println("I'm Groot" + i);
+            System.out.print("I'm Groot" + i);
             int j = 1;
             while (j <= 3)
             {
-                System.out.println(" Shut Up ! ");
+                System.out.print(" Shut Up ! ");
                 j++;
             }
+                System.out.println();
             i++;
         }
         System.out.println("THE END" + i);

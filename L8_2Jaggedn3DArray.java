@@ -8,7 +8,7 @@ public class L8_2Jaggedn3DArray {
         num[1] = new int[8];
         num[2] = new int[2];
 
-        for(int i = 0; i <num.length; i++)
+        for(int i = 0; i < num.length; i++)
         {
             for(int j = 0; j < num[i].length; j++)
             {

@@ -14,7 +14,7 @@ public class L3_0TernaryOperator {
         //     result = 0;
             
         // }
-        result = (a > 0 ? 1 : 0); // // This si ternary operator.
+        result = (a > 0 ? 1 : 0); // // This is ternary operator.
         System.out.println(result);
     }
 }

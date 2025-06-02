@@ -25,6 +25,6 @@ public class L1_0RunPackage{
         System.out.println("7. Output will be displayed");
         System.out.println(" // ADDITIONAL INFORMATION // ");
         System.out.println("1. // // PascalConvention -> classes\n" + 
-                        "2. // // camelCaseConvention -> function");
+                           "2. // // camelCaseConvention -> function");
     }
 } 
